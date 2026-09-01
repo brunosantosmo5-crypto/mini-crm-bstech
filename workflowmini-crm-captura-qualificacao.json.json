@@ -1,0 +1,981 @@
+{
+  "updatedAt": "2026-08-31T22:05:07.678Z",
+  "createdAt": "2026-08-28T01:28:59.287Z",
+  "id": "6KExMVUBFwvN1uIH",
+  "name": "Mini-CRM BStech",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c",
+          "mode": "list",
+          "cachedResultName": "Formulário  Captação de Leads - BStech - respostas(respostas)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 318332574,
+          "mode": "list",
+          "cachedResultName": "Respostas ao formulário 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c/edit#gid=318332574"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b31e8934-3dc1-4eb0-af9f-db834b3750c9",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "JNFYtzvfBAD5Xc2H",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "leads",
+          "mode": "list",
+          "cachedResultName": "leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": 0,
+            "nota_qualificacao": 0,
+            "nome": "={{ $json.Nome }}",
+            "email": "={{ $json['E-mail'] }}",
+            "telefone": "={{ $json.Telefone }}",
+            "empresa": "={{ $json.Empresa }}",
+            "mensagem": "={{ $json.Mensagem }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "empresa",
+              "displayName": "empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mensagem",
+              "displayName": "mensagem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estagio",
+              "displayName": "estagio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nota_qualificacao",
+              "displayName": "nota_qualificacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proxima_acao",
+              "displayName": "proxima_acao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "criado_em",
+              "displayName": "criado_em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atualizado_em",
+              "displayName": "atualizado_em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        224,
+        0
+      ],
+      "id": "9033b991-87c4-4da2-bb3e-390c411426cf",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "YlaVJgnEsaLXupuA",
+          "name": "Postgres account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3-flash-preview"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Analise a mensagem de contato abaixo de um possível cliente da BStech (empresa de tecnologia/sites/sistemas).\nResponda SOMENTE em formato JSON, sem nenhum texto antes ou depois, assim:\n{\"nota\": (0 a 10), \"categoria\": \"quente/morno/frio\", \"proxima_acao\": \"sugestão curta de próximo passo\"}\n\nMensagem do lead: {{ $('Google Sheets Trigger').item.json.Mensagem }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "86320bbc-198d-471d-a504-7b585bc7c432",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "8J14e3oyC3wBSbxl",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const texto = $input.first().json.content.parts[0].text;\nconst textoLimpo = texto.replace(/```json/g, '').replace(/```/g, '').trim();\nconst dados = JSON.parse(textoLimpo);\n\nreturn [{ json: dados }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        816,
+        0
+      ],
+      "id": "ce1cf1ee-fbc4-4452-afcd-78d8c5478fcf",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "leads",
+          "mode": "list",
+          "cachedResultName": "leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ 0 }}",
+            "nota_qualificacao": "={{ $json.nota }}",
+            "proxima_acao": "={{ $now }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "empresa",
+              "displayName": "empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mensagem",
+              "displayName": "mensagem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "estagio",
+              "displayName": "estagio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nota_qualificacao",
+              "displayName": "nota_qualificacao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "proxima_acao",
+              "displayName": "proxima_acao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "criado_em",
+              "displayName": "criado_em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atualizado_em",
+              "displayName": "atualizado_em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.7,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "e68ca387-274c-4fcb-a65f-d132cfe3dc40",
+      "name": "Update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "YlaVJgnEsaLXupuA",
+          "name": "Postgres account 2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Insert rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c",
+      "sheetId": 318332574,
+      "lastIndexChecked": 1
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "b002406e-8b26-458f-aa1c-fdff427927b1",
+  "activeVersionId": "0baa7829-468e-4644-a788-b0f921a73891",
+  "versionCounter": 53,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "parentFolder": null,
+  "activeVersion": {
+    "updatedAt": "2026-08-31T21:56:15.000Z",
+    "createdAt": "2026-08-28T23:34:18.991Z",
+    "versionId": "0baa7829-468e-4644-a788-b0f921a73891",
+    "workflowId": "6KExMVUBFwvN1uIH",
+    "nodes": [
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyMinute"
+              }
+            ]
+          },
+          "documentId": {
+            "__rl": true,
+            "value": "125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c",
+            "mode": "list",
+            "cachedResultName": "Formulário  Captação de Leads - BStech - respostas(respostas)",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": 318332574,
+            "mode": "list",
+            "cachedResultName": "Respostas ao formulário 1",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/125nCv2KwJ6akJ-X6KyzvAdrJ_xgirbqpTIVfJlJ5V0c/edit#gid=318332574"
+          },
+          "event": "rowAdded",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheetsTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "b31e8934-3dc1-4eb0-af9f-db834b3750c9",
+        "name": "Google Sheets Trigger",
+        "credentials": {
+          "googleSheetsTriggerOAuth2Api": {
+            "id": "JNFYtzvfBAD5Xc2H",
+            "name": "Google Sheets Trigger account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "schema": {
+            "__rl": true,
+            "value": "public",
+            "mode": "list",
+            "cachedResultName": "public"
+          },
+          "table": {
+            "__rl": true,
+            "value": "leads",
+            "mode": "list",
+            "cachedResultName": "leads"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "id": 0,
+              "nota_qualificacao": 0,
+              "nome": "={{ $json.Nome }}",
+              "email": "={{ $json['E-mail'] }}",
+              "telefone": "={{ $json.Telefone }}",
+              "empresa": "={{ $json.Empresa }}",
+              "mensagem": "={{ $json.Mensagem }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "telefone",
+                "displayName": "telefone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "empresa",
+                "displayName": "empresa",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "mensagem",
+                "displayName": "mensagem",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "estagio",
+                "displayName": "estagio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nota_qualificacao",
+                "displayName": "nota_qualificacao",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "proxima_acao",
+                "displayName": "proxima_acao",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "criado_em",
+                "displayName": "criado_em",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "atualizado_em",
+                "displayName": "atualizado_em",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.7,
+        "position": [
+          224,
+          0
+        ],
+        "id": "9033b991-87c4-4da2-bb3e-390c411426cf",
+        "name": "Insert rows in a table",
+        "credentials": {
+          "postgres": {
+            "id": "YlaVJgnEsaLXupuA",
+            "name": "Postgres account 2"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "modelId": {
+            "__rl": true,
+            "mode": "list",
+            "value": "models/gemini-3-flash-preview"
+          },
+          "messages": {
+            "values": [
+              {
+                "content": "=Analise a mensagem de contato abaixo de um possível cliente da BStech (empresa de tecnologia/sites/sistemas).\nResponda SOMENTE em formato JSON, sem nenhum texto antes ou depois, assim:\n{\"nota\": (0 a 10), \"categoria\": \"quente/morno/frio\", \"proxima_acao\": \"sugestão curta de próximo passo\"}\n\nMensagem do lead: {{ $('Google Sheets Trigger').item.json.Mensagem }}"
+              }
+            ]
+          },
+          "builtInTools": {},
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1.2,
+        "position": [
+          448,
+          0
+        ],
+        "id": "86320bbc-198d-471d-a504-7b585bc7c432",
+        "name": "Message a model",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "8J14e3oyC3wBSbxl",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const texto = $input.first().json.content.parts[0].text;\nconst textoLimpo = texto.replace(/```json/g, '').replace(/```/g, '').trim();\nconst dados = JSON.parse(textoLimpo);\n\nreturn [{ json: dados }];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          816,
+          0
+        ],
+        "id": "ce1cf1ee-fbc4-4452-afcd-78d8c5478fcf",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "schema": {
+            "__rl": true,
+            "mode": "list",
+            "value": "public"
+          },
+          "table": {
+            "__rl": true,
+            "value": "leads",
+            "mode": "list",
+            "cachedResultName": "leads"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "id": "={{ 0 }}",
+              "nota_qualificacao": "={{ $json.nota }}",
+              "proxima_acao": "={{ $now }}"
+            },
+            "matchingColumns": [
+              "id"
+            ],
+            "schema": [
+              {
+                "id": "id",
+                "displayName": "id",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "nome",
+                "displayName": "nome",
+                "required": true,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "telefone",
+                "displayName": "telefone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "empresa",
+                "displayName": "empresa",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "mensagem",
+                "displayName": "mensagem",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "estagio",
+                "displayName": "estagio",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nota_qualificacao",
+                "displayName": "nota_qualificacao",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "proxima_acao",
+                "displayName": "proxima_acao",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "criado_em",
+                "displayName": "criado_em",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "atualizado_em",
+                "displayName": "atualizado_em",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "canBeUsedToMatch": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.7,
+        "position": [
+          1040,
+          0
+        ],
+        "id": "e68ca387-274c-4fcb-a65f-d132cfe3dc40",
+        "name": "Update rows in a table",
+        "credentials": {
+          "postgres": {
+            "id": "YlaVJgnEsaLXupuA",
+            "name": "Postgres account 2"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Google Sheets Trigger": {
+        "main": [
+          [
+            {
+              "node": "Insert rows in a table",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Insert rows in a table": {
+        "main": [
+          [
+            {
+              "node": "Message a model",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Message a model": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Update rows in a table",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Bruno santos",
+    "name": "v1 - Fluxo completo funcionando",
+    "description": "Captura de leads via Google Sheets Trigger (conectado a formulário\nGoogle Forms), insere no PostgreSQL (Supabase), qualifica via IA\n(Google Gemini) com nota/categoria/próxima ação, e atualiza o\nregistro no banco. Testado com lead de exemplo, funcionando de\nponta a ponta.",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-08-31T21:56:15.663Z",
+        "id": 7,
+        "workflowId": "6KExMVUBFwvN1uIH",
+        "versionId": "0baa7829-468e-4644-a788-b0f921a73891",
+        "event": "activated",
+        "userId": "e30cfcb2-6bb6-4180-80eb-baaac60e677b"
+      }
+    ]
+  },
+  "homeProject": {
+    "id": "c3ashHQ4PwrbnZkR",
+    "type": "personal",
+    "name": "Bruno santos <brunosantosmo5@gmail.com>",
+    "icon": null
+  },
+  "sharedWithProjects": [],
+  "usedCredentials": [
+    {
+      "id": "8J14e3oyC3wBSbxl",
+      "name": "Google Gemini(PaLM) Api account",
+      "type": "googlePalmApi",
+      "currentUserHasAccess": true,
+      "homeProject": {
+        "id": "c3ashHQ4PwrbnZkR",
+        "type": "personal",
+        "name": "Bruno santos <brunosantosmo5@gmail.com>",
+        "icon": null
+      },
+      "sharedWithProjects": []
+    },
+    {
+      "id": "JNFYtzvfBAD5Xc2H",
+      "name": "Google Sheets Trigger account",
+      "type": "googleSheetsTriggerOAuth2Api",
+      "currentUserHasAccess": true,
+      "homeProject": {
+        "id": "c3ashHQ4PwrbnZkR",
+        "type": "personal",
+        "name": "Bruno santos <brunosantosmo5@gmail.com>",
+        "icon": null
+      },
+      "sharedWithProjects": []
+    },
+    {
+      "id": "YlaVJgnEsaLXupuA",
+      "name": "Postgres account 2",
+      "type": "postgres",
+      "currentUserHasAccess": true,
+      "homeProject": {
+        "id": "c3ashHQ4PwrbnZkR",
+        "type": "personal",
+        "name": "Bruno santos <brunosantosmo5@gmail.com>",
+        "icon": null
+      },
+      "sharedWithProjects": []
+    }
+  ],
+  "scopes": [
+    "execution:reveal",
+    "workflow:create",
+    "workflow:delete",
+    "workflow:disableRedaction",
+    "workflow:enableRedaction",
+    "workflow:execute",
+    "workflow:execute-chat",
+    "workflow:export",
+    "workflow:import",
+    "workflow:list",
+    "workflow:move",
+    "workflow:publish",
+    "workflow:read",
+    "workflow:share",
+    "workflow:unpublish",
+    "workflow:unshare",
+    "workflow:update"
+  ],
+  "checksum": "ec6b9ae8f5e5ea2bfab4d05a31880f65b7ccd67c623b2e1f2974e96693f49f2a"
+}
